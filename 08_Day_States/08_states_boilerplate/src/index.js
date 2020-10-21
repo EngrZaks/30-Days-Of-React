@@ -119,14 +119,17 @@ class Countries extends React.Component{
     = this.props.country_data
     const editedLanguages = languages.map((language)=> <span key={language}>{language}, </span>)
     return (
-      <div>
-        <div className='title'><img src={flag} alt={name + ' flag'}/> <h1>{name}</h1></div>
-        <p>
+      <div style={{padding:'15px', marginTop:'25px', width:'80%', margin:'auto', boxShadow:'2px 2px 2px 2px #e3e3e380, -2px -2px 2px 2px #e3e3e380' }}>
+        <div className='title' style={{margin:'auto', textAlign:'center'}}><img src={flag} width='50%' alt={name + ' flag'}/> <h2>{name}</h2></div>
+        <p style={{margin:'10px'}}>
           <b>Capital:</b> {capital} <br/>
           <b>languages:</b> {editedLanguages} <br/>
           <b>population:</b> {population} <br/>
           <b>currency:</b> {currency} <br/>
         </p>
+        <center>
+        <Button text='Select Country ' onClick={this.props.change_country} style={{...buttonStyles, textAlign:'center !important'}} />
+        </center>
       </div>
     )
   }
@@ -170,8 +173,7 @@ class Main extends React.Component {
             style={buttonStyles}
           />
           <Count count={count} addOne={addOne} minusOne={minusOne} />
-          <Countries country_data={country_data}/>
-          <Button text='Select Country ' onClick={change_country} style={buttonStyles} />
+          <Countries country_data={country_data} change_country={change_country}/>
 
         </div>
       </main>
