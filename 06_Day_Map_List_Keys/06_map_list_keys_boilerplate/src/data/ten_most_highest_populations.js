@@ -1,4 +1,4 @@
-export const tenHighestPopulation = [
+export const tenHighestPopulations = [
   { country: 'World', population: 7693165599 },
   { country: 'China', population: 1377422166 },
   { country: 'India', population: 1295210000 },

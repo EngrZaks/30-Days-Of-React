@@ -2,7 +2,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import asabenehImage from './images/asabeneh.jpg'
-
+import {countriesData} from './data/countries'
+// console.table(countriesData)
 // Fuction to show month date year
 
 const showDate = (time) => {
@@ -64,7 +65,6 @@ class Header extends React.Component {
     // the code inside the constructor run before any other code
   }
   render() {
-    console.log(this.props.data)
     const {
       welcome,
       title,
@@ -112,6 +112,25 @@ class TechList extends React.Component {
   }
 }
 
+// countries component
+class Countries extends React.Component{
+  render() {
+    const {name, capital, languages, population, flag, currency}
+    = this.props.country_data
+    const editedLanguages = languages.map((language)=> <span key={language}>{language}, </span>)
+    return (
+      <div>
+        <div className='title'><img src={flag} alt={name + ' flag'}/> <h1>{name}</h1></div>
+        <p>
+          <b>Capital:</b> {capital} <br/>
+          <b>languages:</b> {editedLanguages} <br/>
+          <b>population:</b> {population} <br/>
+          <b>currency:</b> {currency} <br/>
+        </p>
+      </div>
+    )
+  }
+}
 // Main Component
 // Class Component
 class Main extends React.Component {
@@ -128,10 +147,12 @@ class Main extends React.Component {
       count,
       addOne,
       minusOne,
+      country_data,
+      change_country
     } = this.props
     return (
       <main>
-        <div className='main-wrapper'>
+        <div className='main-wrapper' >
           <p>Prerequisite to get started react.js:</p>
           <ul>
             <TechList techs={techs} />
@@ -149,6 +170,9 @@ class Main extends React.Component {
             style={buttonStyles}
           />
           <Count count={count} addOne={addOne} minusOne={minusOne} />
+          <Countries country_data={country_data}/>
+          <Button text='Select Country ' onClick={change_country} style={buttonStyles} />
+
         </div>
       </main>
     )
@@ -179,6 +203,7 @@ class App extends React.Component {
       backgroundColor: '',
       color: '',
     },
+    countryIndex: Math.floor(Math.random()*countriesData.length),
   }
   showDate = (time) => {
     const months = [
@@ -215,7 +240,24 @@ class App extends React.Component {
   greetPeople = () => {
     alert('Welcome to 30 Days Of React Challenge, 2020')
   }
-  changeBackground = () => {}
+  changeBackground = () => {
+    let bg = this.state.styles.backgroundColor
+    let hr = document.createElement('hr')
+    hr.classList.add('rule')
+    let header = document.querySelector('.header-wrapper')
+  if (bg === '') {
+    this.setState({styles:{backgroundColor: 'black', color:'white'}})
+    header.appendChild(hr)
+  } else {
+    this.setState({styles:{backgroundColor: '', color:''}})
+    let rule = document.querySelector('.rule')
+    header.removeChild(rule)
+  }
+  }
+  changeIndex = ()=>{
+    let randomIndex = Math.floor(Math.random()*countriesData.length)
+    this.setState({countryIndex: randomIndex})
+  }
   render() {
     const data = {
       welcome: 'Welcome to 30 Days Of React',
@@ -233,9 +275,8 @@ class App extends React.Component {
     const user = { ...data.author, image: asabenehImage }
 
     return (
-      <div className='app'>
-        {this.state.backgroundColor}
-        <Header data={data} />
+      <div className='app' style={this.state.styles}>
+        <Header data={data} styles={this.state.styles} />
         <Main
           user={user}
           techs={techs}
@@ -245,6 +286,8 @@ class App extends React.Component {
           addOne={this.addOne}
           minusOne={this.minusOne}
           count={this.state.count}
+          country_data={countriesData[this.state.countryIndex]}
+          change_country ={this.changeIndex}
         />
         <Footer date={new Date()} />
       </div>
