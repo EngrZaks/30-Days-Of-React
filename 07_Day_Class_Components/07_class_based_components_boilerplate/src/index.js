@@ -5,21 +5,22 @@ import ReactDOM from 'react-dom'
 import asabenehImage from './images/asabeneh.jpg'
 import {countriesData} from './data/countries'
 
-
+//just playing with the countries api data
 const languageSpeakers = ()=>{
-  let eng=0, arab=0, french=0, port=0, german=0, ita=0
+  let eng=0, arab=0, french=0, port=0, german=0, ita=0, rest=0, len=countriesData.length
   for (let index = 0; index < countriesData.length; index++) {
     const element = countriesData[index];
     if (element.languages.includes('English')) eng++  
-    if (element.languages.includes('Arabic')) arab++  
-    if (element.languages.includes('French')) french++  
-    if (element.languages.includes('Portuguese')) port++  
-    if (element.languages.includes('German')) german++  
-    if (element.languages.includes('Italian')) ita++  
+    else if (element.languages.includes('Arabic')) arab++  
+    else if (element.languages.includes('French')) french++  
+    else if (element.languages.includes('Portuguese')) port++  
+    else if (element.languages.includes('German')) german++  
+    else if (element.languages.includes('Italian')) ita++  
+    else rest++
   }
-  return `English speaking Countries: ${eng}, Arabic speaking Countries: ${arab}, French speaking Countries: ${french}, Portuguese speaking Countries: ${port}, German speaking Countries: ${german}, Italian speaking Countries: ${ita}`
+  console.log(`%cEnglish speaking Countries: ${eng} = ${(eng/len)*100}%, Arabic speaking Countries: ${arab}, French speaking Countries: ${french}, Portuguese speaking Countries: ${port}, German speaking Countries: ${german}, Italian speaking Countries: ${ita}, OTHER language speaking Countries: ${rest}, TOTAL: ${len}`, 'color:red; background:black; border:1px solid yellow; border-radius:5px; padding:5px;')
 }
-console.log(languageSpeakers())
+languageSpeakers()
 
 
 
