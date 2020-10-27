@@ -1,5 +1,5 @@
 <div align="center">
-  <h1> 30 Days Of React: Statet</h1>
+  <h1> 30 Days Of React: States</h1>
   <a class="header-badge" target="_blank" href="https://www.linkedin.com/in/asabeneh/">
   <img src="https://img.shields.io/badge/style--5eba00.svg?label=LinkedIn&logo=linkedin&style=social">
   </a>
@@ -18,7 +18,7 @@
 
 ![30 Days of React banner](../images/30_days_of_react_banner_day_8.jpg)
 
-- [State](#state)
+- [States](#states)
   - [What is State?](#what-is-state)
   - [How to set a state](#how-to-set-a-state)
   - [Resetting a state using a JavaScript method](#resetting-a-state-using-a-javascript-method)
@@ -27,7 +27,7 @@
     - [Exercises: Level 2](#exercises-level-2)
     - [Exercises: Level 3](#exercises-level-3)
 
-# State
+# States
 
 ## What is State?
 
@@ -500,7 +500,7 @@ I believe that now you have a very good understanding of state. After this, we w
 
 ![Change Background](../images/08_day_changing_background_exercise.gif)
 
-2.  After long time of lock down you may think of travelling and you do not know where to go. Then make use of this random country selector to select your holiday destination.
+2.  After long time of lock down, you may think of travelling and you do not know where to go. You may be interested to develop a random country selector that selects your holiday destination.
 
 ![Change Background](../images/08_day_select_country_exercise.gif)
 
