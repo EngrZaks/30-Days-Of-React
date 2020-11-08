@@ -4,6 +4,7 @@ import HexaColr from '../color/HexaColor'
 import Country from '../country/Country'
 import UserCard from '../user/UserCard'
 import { buttonStyles } from '../../styles/button-styles'
+import Portfolio from '../portfolio/portfolio'
 
 
 // TechList Component
@@ -99,6 +100,8 @@ class Main extends React.Component {
           <HexaColr />
           <HexaColr />
           <Country country={country} />
+          <h2>Excercise</h2>
+          <Portfolio/>
         </div>
       </main>
     )

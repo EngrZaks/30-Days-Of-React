@@ -2,11 +2,27 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
+const MovingPart = ({move, x, y})=>{
+  return(
+    <div>
+      <h2 onMouseEnter={move} style={{background:'palegreen',padding:'10px',fontWeight:'bolder', textShadow:'1px 1px 3px blue',transform:`translate(${x}px, ${y}px)`,width:'18%', transition:'transform 0.5s ease-in-out'}}>30 Days of React</h2>
+    </div>
+  )
+}
+
 class App extends Component {
   state = {
     firstName: '',
     message: '',
     key: '',
+    x: '', y: '',
+  }
+  move = (e)=>{
+    let x = Math.floor(Math.random()*(window.innerWidth - e.pageX))
+    let y = Math.floor(Math.random()*(window.innerHeight - e.pageY))
+    console.log(x, y)
+   this.setState({x})
+   this.setState({y})
   }
   handleClick = (e) => {
     // e gives an event object
@@ -49,7 +65,7 @@ class App extends Component {
     return (
       <div>
         <h1>Welcome to the World of Events</h1>
-
+        <MovingPart x={this.state.x} y={this.state.y} move={this.move}/>
         <button onClick={this.handleClick}>Click Me</button>
         <button onMouseMove={this.handleMouseMove}>Move mouse on me</button>
         <p onCopy={this.handleCopy}>

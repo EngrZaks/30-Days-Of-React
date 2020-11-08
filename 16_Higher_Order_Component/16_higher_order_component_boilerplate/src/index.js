@@ -9,8 +9,8 @@ const Button = ({ onClick, text, style }) => {
   )
 }
 
-const buttonWithStyles = (CompParam, name = 'default') => {
-  const colors = [
+const buttonWithStyles = (NormalButton, name='default')=>{
+  let colorGroup = [
     {
       name: 'default',
       backgroundColor: '#e7e7e7',
@@ -42,21 +42,11 @@ const buttonWithStyles = (CompParam, name = 'default') => {
       color: '#ffffff',
     },
   ]
-  const { backgroundColor, color } = colors.find((c) => c.name === name)
-
-  const buttonStyles = {
-    backgroundColor,
-    padding: '10px 45px',
-    border: 'none',
-    borderRadius: 3,
-    margin: 3,
-    cursor: 'pointer',
-    fontSize: '1.25rem',
-    color,
+  const{color, backgroundColor} = colorGroup.find(color => color.name === name)
+  const buttonStyles ={
+    color: color, backgroundColor: backgroundColor, padding:'7px', fontSize:'25px', fontWeight:'bolder', margin:'3px', borderRadius: 5
   }
-  return (props) => {
-    return <CompParam {...props} style={buttonStyles} />
-  }
+  return (props) => <NormalButton {...props} style={buttonStyles}/>
 }
 
 const NewButton = buttonWithStyles(Button)
